@@ -9,18 +9,22 @@
 <meta property="og:description" content="Kitov Sachra Seminary, Jerusalem. Request access.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kitovseminary.com/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://kitovseminary.com/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#14213d">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#faf7f1">
+<meta property="og:image" content="https://kitovseminary.com/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #14213d;
-    --ink-soft: #4a5571;
-    --gold: #a8843f;
+    --ink: #2a3642;
+    --ink-soft: #5b6672;
+    --gold: #9c7f45;
     --paper: #faf7f1;
     --card: #ffffff;
     --line: #e6dfd1;
@@ -43,6 +47,8 @@
     font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
     color: var(--gold); font-weight: 600; margin: 0 0 20px;
   }
+  .logo { display: block; width: min(420px, 82vw); height: auto; margin: 0 auto; }
+  .place { margin: 22px 0 0; }
   h1 {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 600; font-size: clamp(44px, 9vw, 76px);
@@ -62,7 +68,7 @@
     padding: 18px 34px; border-radius: 999px;
     transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s;
   }
-  .btn:hover { background: #1f2f55; }
+  .btn:hover { background: #3a4856; }
   .btn:active { transform: scale(.97); }
   .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
   .btn[disabled] { opacity: .6; cursor: progress; }
@@ -70,9 +76,9 @@
   dialog {
     border: 0; padding: 0; border-radius: 18px; width: min(460px, calc(100vw - 32px));
     background: var(--card); color: var(--ink);
-    box-shadow: 0 24px 64px rgba(20,33,61,.22);
+    box-shadow: 0 24px 64px rgba(42,54,66,.22);
   }
-  dialog::backdrop { background: rgba(20,33,61,.45); }
+  dialog::backdrop { background: rgba(42,54,66,.45); }
   dialog[open] { animation: pop .22s cubic-bezier(.2,.8,.2,1); }
   @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
   @media (prefers-reduced-motion: reduce) { dialog[open] { animation: none; } .btn { transition: none; } }
@@ -104,8 +110,8 @@
 </head>
 <body>
 <main>
-  <p class="eyebrow">Jerusalem</p>
-  <h1>Kitov Sachra Seminary</h1>
+  <h1><img class="logo" src="/assets/logo.png" width="1202" height="444" alt="Kitov Sachra — Bais Yaakov Seminary — כי טוב סחרה"></h1>
+  <p class="eyebrow place">Jerusalem</p>
   <hr class="rule">
   <p class="pasuk">כִּי טוֹב סַחְרָהּ מִסְּחַר־כָּסֶף וּמֵחָרוּץ תְּבוּאָתָהּ</p>
   <p class="pasuk-src">Mishlei 3:14</p>

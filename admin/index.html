@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kitov Admin</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+  :root {
+    --ink: #2a3642; --ink-soft: #5b6672; --gold: #9c7f45; --paper: #faf7f1; --card: #fff;
+    --line: #e9e3d6; --hover: #f6f2ea; --danger: #a3372f;
+    --new: #2f5fb3; --contacted: #a8843f; --approved: #2f7d4f; --declined: #8a8f9c;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.5 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  [hidden] { display: none !important; }
+  button { font: inherit; cursor: pointer; }
+  input, textarea, select { font: inherit; color: inherit; }
+  .serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; }
+  .btn { border: 0; border-radius: 10px; padding: 10px 16px; background: var(--ink); color: #fff; font-weight: 600; }
+  .btn:hover { background: #3a4856; }
+  .btn[disabled] { opacity: .55; cursor: progress; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn.ghost:hover { background: var(--hover); }
+  .btn.danger { background: transparent; color: var(--danger); border: 1px solid #e8cfcc; }
+  .btn.danger:hover { background: #fbf1f0; }
+  .btn:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, .row:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .field { width: 100%; padding: 11px 13px; border: 1px solid var(--line); border-radius: 10px; background: #fff; font-size: 16px; }
+  .muted { color: var(--ink-soft); }
+  .err { color: var(--danger); min-height: 1.5em; margin: 8px 0 0; }
+
+  /* Sign in */
+  .auth { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
+  .auth .card { width: min(400px, 100%); background: var(--card); border-radius: 18px; padding: 32px 24px; box-shadow: 0 10px 40px rgba(42,54,66,.08); }
+  .auth h1 { font-size: 34px; margin: 0 0 4px; }
+  .auth p { margin: 0 0 20px; }
+  .auth label { display: block; font-weight: 500; margin-bottom: 6px; }
+  .auth .btn { width: 100%; margin-top: 14px; padding: 13px; }
+  .code { letter-spacing: .4em; text-align: center; font-size: 24px; }
+  .link { background: none; border: 0; color: var(--ink-soft); text-decoration: underline; padding: 0; margin-top: 14px; }
+
+  /* Shell */
+  header { position: sticky; top: 0; z-index: 5; background: rgba(250,247,241,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .bar { max-width: 1100px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 16px; }
+  .bar h1 { font-size: 24px; margin: 0; white-space: nowrap; display: flex; align-items: center; gap: 10px; }
+  .bar h1 img, .auth h1 img { width: 30px; height: 30px; }
+  .auth h1 { display: flex; align-items: center; gap: 12px; }
+  nav { display: flex; gap: 4px; }
+  nav button { border: 0; background: none; padding: 8px 12px; border-radius: 8px; color: var(--ink-soft); font-weight: 500; }
+  nav button[aria-current="page"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(42,54,66,.08); }
+  .me { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .me span { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 64px; }
+
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 6px 12px; font-weight: 500; font-size: 13px; color: var(--ink-soft); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .chip .n { opacity: .7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+  .search { flex: 1 1 200px; max-width: 320px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+  .toolbar .btn { padding: 8px 14px; }
+  .spacer { flex: 1; }
+
+  .list { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .row { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1.5fr) 140px 110px 100px; gap: 12px; align-items: center; padding: 13px 16px; border-top: 1px solid var(--line); cursor: pointer; }
+  .row:first-child { border-top: 0; }
+  .row:hover { background: var(--hover); }
+  .row.head { cursor: default; background: var(--paper); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); font-weight: 600; }
+  .row.head:hover { background: var(--paper); }
+  .cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .name { font-weight: 600; }
+  .date { font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; text-transform: capitalize; }
+  .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .empty { padding: 48px 16px; text-align: center; color: var(--ink-soft); }
+
+  /* Drawer */
+  .scrim { position: fixed; inset: 0; background: rgba(42,54,66,.3); z-index: 10; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(480px, 100vw); background: var(--card); z-index: 11; box-shadow: -10px 0 40px rgba(42,54,66,.15); display: flex; flex-direction: column; animation: slide .22s cubic-bezier(.2,.8,.2,1); }
+  @keyframes slide { from { transform: translateX(24px); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .drawer { animation: none; } }
+  .drawer .top { display: flex; align-items: flex-start; gap: 12px; padding: 20px 20px 12px; border-bottom: 1px solid var(--line); }
+  .drawer h2 { font-size: 28px; margin: 0; line-height: 1.1; word-break: break-word; }
+  .x { margin-left: auto; border: 0; background: none; font-size: 24px; line-height: 1; width: 36px; height: 36px; border-radius: 50%; color: var(--ink-soft); flex: none; }
+  .x:hover { background: var(--hover); }
+  .drawer .body { padding: 16px 20px 24px; overflow-y: auto; flex: 1; }
+  dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 12px; margin: 0 0 20px; }
+  dt { color: var(--ink-soft); }
+  dd { margin: 0; word-break: break-word; }
+  .msg { white-space: pre-wrap; background: var(--paper); border-radius: 10px; padding: 12px; margin: 0 0 20px; }
+  h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); margin: 0 0 8px; }
+  .status-set { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 20px; }
+  .status-set button { border: 1px solid var(--line); background: #fff; border-radius: 10px; padding: 9px 4px; font-size: 13px; font-weight: 500; text-transform: capitalize; }
+  .status-set button[aria-pressed="true"] { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, #fff); color: var(--c); font-weight: 600; }
+  textarea.field { min-height: 120px; resize: vertical; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+  .saved { font-size: 13px; color: var(--approved); }
+  .meta { font-size: 12px; color: var(--ink-soft); margin-top: 24px; }
+
+  /* Staff */
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; max-width: 640px; }
+  .panel h2 { font-size: 26px; margin: 0 0 4px; }
+  .staff-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .staff-row:first-of-type { border-top: 0; }
+  .staff-row .e { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .role { font-size: 12px; color: var(--ink-soft); text-transform: capitalize; }
+  .add { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .add .field { flex: 1 1 220px; font-size: 14px; padding: 9px 12px; }
+  .add select.field { flex: 0 0 auto; }
+
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 20; font-weight: 500; }
+
+  @media (max-width: 760px) {
+    .bar { flex-wrap: wrap; gap: 8px 12px; }
+    .me { order: 2; }
+    nav { order: 3; width: 100%; }
+    .me span { display: none; }
+    .row { grid-template-columns: 1fr auto; gap: 2px 12px; }
+    .row.head { display: none; }
+    .row .email { grid-column: 1; font-size: 13px; color: var(--ink-soft); }
+    .row .roleCell { display: none; }
+    .row .date { grid-column: 2; grid-row: 2; text-align: right; font-size: 12px; }
+    .row .st { grid-column: 2; grid-row: 1; text-align: right; }
+    .search { max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sign in -->
+<section class="auth" id="auth" hidden>
+  <div class="card">
+    <h1 class="serif"><img src="/assets/mark.png" alt="" width="30" height="30">Kitov Admin</h1>
+    <form id="emailForm">
+      <p class="muted">Enter your email and we'll send you a sign-in code.</p>
+      <label for="email">Email</label>
+      <input class="field" id="email" type="email" autocomplete="email" required>
+      <button class="btn" type="submit">Send code</button>
+    </form>
+    <form id="codeForm" hidden>
+      <p class="muted">We sent a 6-digit code to <strong id="sentTo"></strong>.</p>
+      <label for="code">Code</label>
+      <input class="field code" id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="\d{6}" required>
+      <button class="btn" type="submit">Sign in</button>
+      <button class="link" type="button" id="back">Use a different email</button>
+    </form>
+    <p class="err" id="authErr" role="alert"></p>
+  </div>
+</section>
+
+<!-- Not staff -->
+<section class="auth" id="denied" hidden>
+  <div class="card">
+    <h1 class="serif">No access</h1>
+    <p class="muted"><strong id="deniedEmail"></strong> isn't on the staff list. Ask an owner to add you.</p>
+    <button class="btn" type="button" data-signout>Sign out</button>
+  </div>
+</section>
+
+<!-- App -->
+<div id="app" hidden>
+  <header>
+    <div class="bar">
+      <h1 class="serif"><img src="/assets/mark.png" alt="" width="30" height="30">Kitov Admin</h1>
+      <nav>
+        <button type="button" data-view="requests" aria-current="page">Requests</button>
+        <button type="button" data-view="staff">Staff</button>
+      </nav>
+      <div class="me"><span id="meEmail"></span><button class="btn ghost" type="button" data-signout>Sign out</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-requests">
+      <div class="toolbar">
+        <div class="chips" id="chips"></div>
+        <input class="search" id="search" type="search" placeholder="Search name, email, phone…" aria-label="Search requests">
+        <span class="spacer"></span>
+        <button class="btn ghost" type="button" id="refresh">Refresh</button>
+        <button class="btn ghost" type="button" id="export">Export CSV</button>
+      </div>
+      <div class="list" id="list" role="list"></div>
+    </section>
+
+    <section id="view-staff" hidden>
+      <div class="panel">
+        <h2 class="serif">Staff</h2>
+        <p class="muted" style="margin:0 0 12px">People who can sign in here. Owners can add and remove staff.</p>
+        <div id="staffList"></div>
+        <form class="add" id="addStaff" hidden>
+          <input class="field" id="newEmail" type="email" placeholder="name@example.com" required aria-label="New staff email">
+          <select class="field" id="newRole" aria-label="Role"><option value="staff">Staff</option><option value="owner">Owner</option></select>
+          <button class="btn" type="submit">Add</button>
+        </form>
+        <p class="err" id="staffErr" role="alert"></p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-modal="true" role="dialog" aria-labelledby="dName"></aside>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+const sb = supabase.createClient(
+  "https://fyrtoeonmxubxjyvqmif.supabase.co",
+  "sb_publishable_C8fosExsAC-Qn4s_R3pkUw_QrjUi-nz"
+);
+const STATUSES = ["new", "contacted", "approved", "declined"];
+const ROLES = { prospective_student: "Prospective student", parent: "Parent", alumna: "Alumna", staff: "Staff", other: "Other" };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtDate = (d) => new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+const fmtFull = (d) => new Date(d).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+
+let me = null, isOwner = false, requests = [], filter = "new", query = "", openId = null;
+
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.t); toast.t = setTimeout(() => (t.hidden = true), 2200);
+}
+function show(which) {
+  for (const id of ["auth", "denied", "app"]) $(id).hidden = id !== which;
+}
+
+/* ---------- Auth ---------- */
+let pendingEmail = "";
+$("emailForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = e.submitter; $("authErr").textContent = "";
+  pendingEmail = $("email").value.trim().toLowerCase();
+  btn.disabled = true;
+  const { error } = await sb.auth.signInWithOtp({
+    email: pendingEmail,
+    options: { emailRedirectTo: location.origin + "/admin/" },
+  });
+  btn.disabled = false;
+  if (error) { $("authErr").textContent = error.message; return; }
+  $("sentTo").textContent = pendingEmail;
+  $("emailForm").hidden = true; $("codeForm").hidden = false; $("code").focus();
+});
+$("codeForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = e.submitter; $("authErr").textContent = "";
+  btn.disabled = true;
+  const token = $("code").value.trim();
+  let { error } = await sb.auth.verifyOtp({ email: pendingEmail, token, type: "email" });
+  if (error) ({ error } = await sb.auth.verifyOtp({ email: pendingEmail, token, type: "signup" }));
+  btn.disabled = false;
+  if (error) $("authErr").textContent = "That code didn't work. Check it, or request a new one.";
+});
+$("back").addEventListener("click", () => {
+  $("codeForm").hidden = true; $("emailForm").hidden = false; $("code").value = ""; $("authErr").textContent = "";
+});
+document.querySelectorAll("[data-signout]").forEach((b) => b.addEventListener("click", () => sb.auth.signOut()));
+
+let booted;
+sb.auth.onAuthStateChange((_evt, session) => {
+  const email = session?.user?.email || null;
+  if (email === booted) return;
+  booted = email;
+  setTimeout(() => boot(session), 0);
+});
+
+async function boot(session) {
+  if (!session) { me = null; closeDrawer(); show("auth"); return; }
+  me = session.user.email.toLowerCase();
+  const { data: staff } = await sb.rpc("is_staff");
+  if (!staff) { $("deniedEmail").textContent = me; show("denied"); return; }
+  const { data: owner } = await sb.rpc("is_owner");
+  isOwner = !!owner;
+  $("meEmail").textContent = me;
+  $("addStaff").hidden = !isOwner;
+  show("app");
+  history.replaceState(null, "", location.pathname);
+  loadRequests();
+}
+
+/* ---------- Navigation ---------- */
+document.querySelectorAll("nav [data-view]").forEach((b) =>
+  b.addEventListener("click", () => {
+    document.querySelectorAll("nav [data-view]").forEach((x) => x.removeAttribute("aria-current"));
+    b.setAttribute("aria-current", "page");
+    $("view-requests").hidden = b.dataset.view !== "requests";
+    $("view-staff").hidden = b.dataset.view !== "staff";
+    if (b.dataset.view === "staff") loadStaff();
+  })
+);
+
+/* ---------- Requests ---------- */
+async function loadRequests() {
+  $("list").innerHTML = '<div class="empty">Loading…</div>';
+  const { data, error } = await sb.from("access_requests").select("*").order("created_at", { ascending: false });
+  if (error) { $("list").innerHTML = `<div class="empty">Couldn't load requests: ${esc(error.message)}</div>`; return; }
+  requests = data;
+  render();
+}
+function visible() {
+  const q = query.toLowerCase();
+  return requests.filter((r) =>
+    (filter === "all" || r.status === filter) &&
+    (!q || [r.full_name, r.email, r.phone, r.message, r.notes].some((v) => (v || "").toLowerCase().includes(q)))
+  );
+}
+function render() {
+  const counts = Object.fromEntries(STATUSES.map((s) => [s, requests.filter((r) => r.status === s).length]));
+  $("chips").innerHTML = [...STATUSES, "all"].map((s) =>
+    `<button class="chip" type="button" data-f="${s}" aria-pressed="${filter === s}">${s[0].toUpperCase() + s.slice(1)}<span class="n">${s === "all" ? requests.length : counts[s]}</span></button>`
+  ).join("");
+  const rows = visible();
+  $("list").innerHTML = rows.length
+    ? `<div class="row head"><div>Name</div><div>Email</div><div class="roleCell">I am a…</div><div>Received</div><div>Status</div></div>` +
+      rows.map((r) => `
+        <div class="row" role="listitem" tabindex="0" data-id="${r.id}">
+          <div class="cell name">${esc(r.full_name)}</div>
+          <div class="cell email">${esc(r.email)}</div>
+          <div class="cell roleCell muted">${esc(ROLES[r.role] || "—")}</div>
+          <div class="cell date">${fmtDate(r.created_at)}</div>
+          <div class="cell st"><span class="badge" style="--c:var(--${r.status})">${r.status}</span></div>
+        </div>`).join("")
+    : `<div class="empty">${requests.length ? "Nothing matches." : "No requests yet. They'll appear here when someone uses Request Access on the site."}</div>`;
+}
+$("chips").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-f]"); if (!b) return;
+  filter = b.dataset.f; render();
+});
+$("search").addEventListener("input", (e) => { query = e.target.value; render(); });
+$("refresh").addEventListener("click", loadRequests);
+$("list").addEventListener("click", (e) => { const r = e.target.closest(".row[data-id]"); if (r) openDrawer(r.dataset.id); });
+$("list").addEventListener("keydown", (e) => {
+  const r = e.target.closest(".row[data-id]");
+  if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openDrawer(r.dataset.id); }
+});
+
+$("export").addEventListener("click", () => {
+  const cols = ["created_at", "full_name", "email", "phone", "role", "status", "message", "notes", "updated_at", "updated_by"];
+  const cell = (v) => {
+    let s = String(v ?? "");
+    if (/^[=+\-@]/.test(s)) s = "'" + s;
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const csv = [cols.join(","), ...visible().map((r) => cols.map((c) => cell(r[c])).join(","))].join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+  a.download = `kitov-requests-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click(); URL.revokeObjectURL(a.href);
+});
+
+/* ---------- Drawer ---------- */
+function openDrawer(id) {
+  const r = requests.find((x) => x.id === id); if (!r) return;
+  openId = id;
+  const d = $("drawer");
+  d.innerHTML = `
+    <div class="top">
+      <div><h2 class="serif" id="dName">${esc(r.full_name)}</h2><div class="muted">${fmtFull(r.created_at)}</div></div>
+      <button class="x" type="button" aria-label="Close" data-close>&times;</button>
+    </div>
+    <div class="body">
+      <dl>
+        <dt>Email</dt><dd><a href="mailto:${esc(r.email)}">${esc(r.email)}</a></dd>
+        <dt>Phone</dt><dd>${r.phone ? `<a href="tel:${esc(r.phone)}">${esc(r.phone)}</a>` : '<span class="muted">—</span>'}</dd>
+        <dt>I am a…</dt><dd>${esc(ROLES[r.role] || "—")}</dd>
+      </dl>
+      ${r.message ? `<h3>Message</h3><p class="msg">${esc(r.message)}</p>` : ""}
+      <h3>Status</h3>
+      <div class="status-set">${STATUSES.map((s) => `<button type="button" data-s="${s}" style="--c:var(--${s})" aria-pressed="${r.status === s}">${s}</button>`).join("")}</div>
+      <h3><label for="notes">Internal notes</label></h3>
+      <textarea class="field" id="notes" maxlength="5000" placeholder="Only staff can see these.">${esc(r.notes)}</textarea>
+      <div class="actions">
+        <button class="btn" type="button" id="saveNotes">Save notes</button>
+        <span class="saved" id="savedMsg" hidden>Saved</span>
+        <span class="spacer" style="flex:1"></span>
+        ${isOwner ? '<button class="btn danger" type="button" id="del">Delete</button>' : ""}
+      </div>
+      ${r.updated_at ? `<p class="meta">Last updated ${fmtFull(r.updated_at)}${r.updated_by ? " by " + esc(r.updated_by) : ""}</p>` : ""}
+    </div>`;
+  $("scrim").hidden = false; d.hidden = false;
+  d.querySelector("[data-close]").focus();
+}
+function closeDrawer() { $("drawer").hidden = true; $("scrim").hidden = true; openId = null; }
+$("scrim").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && openId) closeDrawer(); });
+
+async function update(id, patch) {
+  const { data, error } = await sb.from("access_requests").update(patch).eq("id", id).select().single();
+  if (error) { toast("Couldn't save: " + error.message); return null; }
+  requests = requests.map((r) => (r.id === id ? data : r));
+  render();
+  return data;
+}
+$("drawer").addEventListener("click", async (e) => {
+  if (e.target.closest("[data-close]")) return closeDrawer();
+  const s = e.target.closest("[data-s]");
+  if (s) {
+    const updated = await update(openId, { status: s.dataset.s });
+    if (updated) { openDrawer(openId); toast(`Marked ${updated.status}`); }
+    return;
+  }
+  if (e.target.id === "saveNotes") {
+    e.target.disabled = true;
+    const updated = await update(openId, { notes: $("notes").value.trim() || null });
+    e.target.disabled = false;
+    if (updated) { $("savedMsg").hidden = false; setTimeout(() => $("savedMsg") && ($("savedMsg").hidden = true), 1800); }
+    return;
+  }
+  if (e.target.id === "del") {
+    if (e.target.dataset.armed !== "1") { e.target.dataset.armed = "1"; e.target.textContent = "Click again to delete"; return; }
+    const { error } = await sb.from("access_requests").delete().eq("id", openId);
+    if (error) return toast("Couldn't delete: " + error.message);
+    requests = requests.filter((r) => r.id !== openId);
+    closeDrawer(); render(); toast("Request deleted");
+  }
+});
+
+/* ---------- Staff ---------- */
+async function loadStaff() {
+  $("staffErr").textContent = "";
+  const { data, error } = await sb.from("staff").select("*").order("added_at");
+  if (error) { $("staffErr").textContent = error.message; return; }
+  $("staffList").innerHTML = data.map((s) => `
+    <div class="staff-row">
+      <div class="e"><div>${esc(s.email)}${s.email === me ? ' <span class="muted">(you)</span>' : ""}</div><div class="role">${s.role}</div></div>
+      ${isOwner && s.email !== me ? `<button class="btn danger" type="button" data-remove="${esc(s.email)}">Remove</button>` : ""}
+    </div>`).join("");
+}
+$("staffList").addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-remove]"); if (!b) return;
+  if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "Confirm remove"; return; }
+  const { error } = await sb.from("staff").delete().eq("email", b.dataset.remove);
+  if (error) { $("staffErr").textContent = error.message; return; }
+  toast("Removed"); loadStaff();
+});
+$("addStaff").addEventListener("submit", async (e) => {
+  e.preventDefault(); $("staffErr").textContent = "";
+  const email = $("newEmail").value.trim().toLowerCase();
+  const { error } = await sb.from("staff").insert({ email, role: $("newRole").value, added_by: me });
+  if (error) { $("staffErr").textContent = error.code === "23505" ? "That email is already on the list." : error.message; return; }
+  $("newEmail").value = ""; toast("Added " + email); loadStaff();
+});
+</script>
+</body>
+</html>
