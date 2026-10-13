@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kitovseminary.com/sitemap.xml

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitov Sachra Seminary · Jerusalem</title>
+<meta name="description" content="Kitov Sachra Seminary, Jerusalem. Request access.">
+<meta property="og:title" content="Kitov Sachra Seminary">
+<meta property="og:description" content="Kitov Sachra Seminary, Jerusalem. Request access.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kitovseminary.com/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://kitovseminary.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#14213d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14213d;
+    --ink-soft: #4a5571;
+    --gold: #a8843f;
+    --paper: #faf7f1;
+    --card: #ffffff;
+    --line: #e6dfd1;
+    --danger: #a3372f;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+    min-height: 100svh;
+  }
+  main { text-align: center; max-width: 640px; width: 100%; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin: 0 0 20px;
+  }
+  h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600; font-size: clamp(44px, 9vw, 76px);
+    line-height: 1.02; letter-spacing: -.01em; margin: 0;
+    text-wrap: balance;
+  }
+  .rule { width: 56px; height: 1px; background: var(--gold); margin: 28px auto; border: 0; }
+  .pasuk {
+    font-family: "Frank Ruhl Libre", serif; font-size: clamp(19px, 3.6vw, 24px);
+    margin: 0 0 6px; direction: rtl;
+  }
+  .pasuk-src { color: var(--ink-soft); font-size: 13px; margin: 0 0 40px; }
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    background: var(--ink); color: #fff;
+    font: 600 16px/1 Inter, sans-serif; letter-spacing: .01em;
+    padding: 18px 34px; border-radius: 999px;
+    transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s;
+  }
+  .btn:hover { background: #1f2f55; }
+  .btn:active { transform: scale(.97); }
+  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .btn[disabled] { opacity: .6; cursor: progress; }
+
+  dialog {
+    border: 0; padding: 0; border-radius: 18px; width: min(460px, calc(100vw - 32px));
+    background: var(--card); color: var(--ink);
+    box-shadow: 0 24px 64px rgba(20,33,61,.22);
+  }
+  dialog::backdrop { background: rgba(20,33,61,.45); }
+  dialog[open] { animation: pop .22s cubic-bezier(.2,.8,.2,1); }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+  @media (prefers-reduced-motion: reduce) { dialog[open] { animation: none; } .btn { transition: none; } }
+  .sheet { padding: 28px 24px 24px; position: relative; text-align: left; }
+  .sheet h2 { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 32px; margin: 0 0 4px; }
+  .sheet .sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 20px; }
+  .close {
+    position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%;
+    border: 0; background: transparent; color: var(--ink-soft); font-size: 22px; cursor: pointer;
+  }
+  .close:hover { background: var(--paper); }
+  label { display: block; font-size: 13px; font-weight: 500; margin: 0 0 6px; }
+  .opt { color: var(--ink-soft); font-weight: 400; }
+  input, select, textarea {
+    width: 100%; font: 16px Inter, sans-serif; color: var(--ink);
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
+    margin: 0 0 16px;
+  }
+  textarea { resize: vertical; min-height: 84px; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
+  .sheet .btn { width: 100%; margin-top: 4px; }
+  .err { color: var(--danger); font-size: 14px; margin: 0 0 12px; min-height: 0; }
+  .err:empty { display: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .done { text-align: center; padding: 12px 0 4px; }
+  .done p { color: var(--ink-soft); margin: 8px 0 20px; }
+  footer { margin-top: 56px; font-size: 12px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Jerusalem</p>
+  <h1>Kitov Sachra Seminary</h1>
+  <hr class="rule">
+  <p class="pasuk">כִּי טוֹב סַחְרָהּ מִסְּחַר־כָּסֶף וּמֵחָרוּץ תְּבוּאָתָהּ</p>
+  <p class="pasuk-src">Mishlei 3:14</p>
+  <button class="btn" id="open" type="button">Request Access</button>
+  <footer>© <span id="yr"></span> Kitov Sachra Seminary</footer>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="sheet">
+    <button class="close" type="button" aria-label="Close" data-close>&times;</button>
+    <form id="form" novalidate>
+      <h2 id="dlg-title">Request Access</h2>
+      <p class="sub">Leave your details and we'll be in touch.</p>
+      <label for="full_name">Full name</label>
+      <input id="full_name" name="full_name" autocomplete="name" required maxlength="200">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required maxlength="320">
+      <label for="phone">Phone <span class="opt">(optional)</span></label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="50">
+      <label for="role">I am a…</label>
+      <select id="role" name="role">
+        <option value="prospective_student">Prospective student</option>
+        <option value="parent">Parent</option>
+        <option value="alumna">Alumna</option>
+        <option value="staff">Staff</option>
+        <option value="other">Other</option>
+      </select>
+      <label for="message">Message <span class="opt">(optional)</span></label>
+      <textarea id="message" name="message" maxlength="2000"></textarea>
+      <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn" type="submit" id="submit">Send request</button>
+    </form>
+    <div class="done" id="done" hidden>
+      <h2>Thank you</h2>
+      <p>Your request was received. We'll be in touch soon.</p>
+      <button class="btn" type="button" data-close>Close</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const SUPABASE_URL = "https://fyrtoeonmxubxjyvqmif.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_C8fosExsAC-Qn4s_R3pkUw_QrjUi-nz";
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  const dlg = document.getElementById("dlg");
+  const form = document.getElementById("form");
+  const done = document.getElementById("done");
+  const err = document.getElementById("err");
+  const submit = document.getElementById("submit");
+
+  document.getElementById("open").addEventListener("click", () => {
+    form.hidden = false; done.hidden = true; err.textContent = "";
+    dlg.showModal();
+    document.getElementById("full_name").focus();
+  });
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg || e.target.closest("[data-close]")) dlg.close();
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    const f = new FormData(form);
+    if (f.get("website")) { form.hidden = true; done.hidden = false; return; }
+    const body = {
+      full_name: String(f.get("full_name") || "").trim(),
+      email: String(f.get("email") || "").trim(),
+      phone: String(f.get("phone") || "").trim() || null,
+      role: f.get("role") || null,
+      message: String(f.get("message") || "").trim() || null,
+    };
+    if (!body.full_name) { err.textContent = "Please enter your name."; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email)) { err.textContent = "Please enter a valid email."; return; }
+    submit.disabled = true; submit.textContent = "Sending…";
+    try {
+      const res = await fetch(SUPABASE_URL + "/rest/v1/access_requests", {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset(); form.hidden = true; done.hidden = false;
+    } catch {
+      err.textContent = "Something went wrong. Please try again.";
+    } finally {
+      submit.disabled = false; submit.textContent = "Send request";
+    }
+  });
+</script>
+</body>
+</html>
