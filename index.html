@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kitov Sachra Seminary · Jerusalem</title>
-<meta name="description" content="Kitov Sachra Seminary, Jerusalem. Request access.">
-<meta property="og:title" content="Kitov Sachra Seminary">
-<meta property="og:description" content="Kitov Sachra Seminary, Jerusalem. Request access.">
+<title>Kitov Sachra Seminary · Bais Yaakov · Jerusalem</title>
+<meta name="description" content="Kitov Sachra is a Bais Yaakov seminary in the Geula neighborhood of Jerusalem: an 8–10 month, English-language year of learning, chesed and growth for young women. Request access to learn more.">
+<meta property="og:title" content="Kitov Sachra Seminary · Jerusalem">
+<meta property="og:description" content="A Bais Yaakov seminary in the heart of Jerusalem. Request access to learn more.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kitovseminary.com/">
+<meta property="og:image" content="https://kitovseminary.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://kitovseminary.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -16,115 +17,396 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#faf7f1">
-<meta property="og:image" content="https://kitovseminary.com/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Frank+Ruhl+Libre:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Kitov Sachra Seminary","alternateName":["Ki Tov Sachra","Bais Yaakov Seminary Ki Tov Sachra"],"url":"https://kitovseminary.com/","logo":"https://kitovseminary.com/assets/logo.png","address":{"@type":"PostalAddress","addressLocality":"Jerusalem","addressCountry":"IL"}}
+</script>
 <style>
   :root {
     --ink: #2a3642;
+    --ink-2: #3a4856;
     --ink-soft: #5b6672;
     --gold: #9c7f45;
+    --gold-soft: #c4aa7c;
     --paper: #faf7f1;
+    --stone: #f1ebdf;
     --card: #ffffff;
     --line: #e6dfd1;
     --danger: #a3372f;
+    --ease: cubic-bezier(.22,.8,.24,1);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --hebrew: "Frank Ruhl Libre", "Times New Roman", serif;
   }
   * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: Inter, system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    display: grid;
-    place-items: center;
-    padding: 24px 16px;
-    min-height: 100svh;
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 17px/1.65 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  main { text-align: center; max-width: 640px; width: 100%; }
-  .eyebrow {
-    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--gold); font-weight: 600; margin: 0 0 20px;
-  }
-  .logo { display: block; width: min(420px, 82vw); height: auto; margin: 0 auto; }
-  .place { margin: 22px 0 0; }
-  h1 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600; font-size: clamp(44px, 9vw, 76px);
-    line-height: 1.02; letter-spacing: -.01em; margin: 0;
-    text-wrap: balance;
-  }
-  .rule { width: 56px; height: 1px; background: var(--gold); margin: 28px auto; border: 0; }
-  .pasuk {
-    font-family: "Frank Ruhl Libre", serif; font-size: clamp(19px, 3.6vw, 24px);
-    margin: 0 0 6px; direction: rtl;
-  }
-  .pasuk-src { color: var(--ink-soft); font-size: 13px; margin: 0 0 40px; }
-  .btn {
-    appearance: none; border: 0; cursor: pointer;
-    background: var(--ink); color: #fff;
-    font: 600 16px/1 Inter, sans-serif; letter-spacing: .01em;
-    padding: 18px 34px; border-radius: 999px;
-    transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s;
-  }
-  .btn:hover { background: #3a4856; }
-  .btn:active { transform: scale(.97); }
-  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-  .btn[disabled] { opacity: .6; cursor: progress; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+  .eyebrow { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0 0 14px; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 5.4vw, 58px); line-height: 1.05; letter-spacing: -.01em; margin: 0 0 18px; text-wrap: balance; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 27px; line-height: 1.15; margin: 0 0 8px; }
+  p { margin: 0 0 16px; }
+  .lede { font-size: clamp(18px, 2.1vw, 21px); color: var(--ink-soft); max-width: 60ch; text-wrap: pretty; }
 
-  dialog {
-    border: 0; padding: 0; border-radius: 18px; width: min(460px, calc(100vw - 32px));
-    background: var(--card); color: var(--ink);
-    box-shadow: 0 24px 64px rgba(42,54,66,.22);
+  /* Buttons */
+  .btn {
+    appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    font: 600 16px/1 Inter, sans-serif; letter-spacing: .01em;
+    padding: 17px 30px; border-radius: 999px;
+    transition: transform .18s var(--ease), background-color .2s, box-shadow .25s var(--ease);
+    box-shadow: 0 6px 18px -8px rgba(42,54,66,.55);
   }
-  dialog::backdrop { background: rgba(42,54,66,.45); }
-  dialog[open] { animation: pop .22s cubic-bezier(.2,.8,.2,1); }
-  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
-  @media (prefers-reduced-motion: reduce) { dialog[open] { animation: none; } .btn { transition: none; } }
-  .sheet { padding: 28px 24px 24px; position: relative; text-align: left; }
-  .sheet h2 { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: 32px; margin: 0 0 4px; }
-  .sheet .sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 20px; }
-  .close {
-    position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%;
-    border: 0; background: transparent; color: var(--ink-soft); font-size: 22px; cursor: pointer;
+  .btn:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 10px 24px -10px rgba(42,54,66,.6); }
+  .btn:active { transform: scale(.97); }
+  .btn:focus-visible, .link:focus-visible, .faq summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .btn[disabled] { opacity: .6; cursor: progress; }
+  .btn .arrow { transition: transform .2s var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .btn.light { background: #fff; color: var(--ink); box-shadow: none; }
+  .btn.light:hover { background: var(--stone); }
+  .btn.sm { padding: 11px 18px; font-size: 14px; box-shadow: none; }
+  .link { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-soft); padding-bottom: 2px; transition: border-color .2s; }
+  .link:hover { border-color: var(--ink); }
+
+  /* Nav */
+  .nav { position: fixed; inset: 0 0 auto; z-index: 20; transition: background-color .3s, box-shadow .3s, backdrop-filter .3s; }
+  .nav.scrolled { background: rgba(250,247,241,.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+  .nav .wrap { display: flex; align-items: center; gap: 24px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: .01em; }
+  .brand img { width: 30px; height: 30px; }
+  .nav ul { display: flex; gap: 26px; list-style: none; margin: 0 0 0 auto; padding: 0; font-size: 15px; }
+  .nav ul a { text-decoration: none; color: var(--ink-soft); transition: color .2s; }
+  .nav ul a:hover { color: var(--ink); }
+  @media (max-width: 760px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+
+  /* Hero */
+  .hero { position: relative; min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 110px 0 80px; overflow: hidden; isolation: isolate; }
+  .hero::before {
+    content: ""; position: absolute; inset: -20% -10% auto; height: 120%; z-index: -1;
+    background:
+      radial-gradient(40% 32% at 50% 38%, rgba(196,170,124,.28), transparent 70%),
+      radial-gradient(60% 50% at 50% 100%, var(--stone), transparent 70%);
   }
+  .arches { position: absolute; inset: auto 0 0; z-index: -1; width: 100%; height: clamp(70px, 11vw, 150px); opacity: .5; color: var(--line); }
+  .hero-logo { width: min(560px, 86vw); margin: 0 auto 30px; }
+  .hero h1 { font-family: var(--serif); font-weight: 500; font-style: italic; font-size: clamp(28px, 4vw, 42px); line-height: 1.2; margin: 0 auto 18px; max-width: 22ch; text-wrap: balance; }
+  .hero .lede { margin: 0 auto 34px; }
+  .hero .ctas { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .scroll-cue { position: absolute; bottom: 26px; left: 50%; width: 1px; height: 44px; background: linear-gradient(var(--gold), transparent); transform-origin: top; animation: cue 2.4s var(--ease) infinite; }
+  @keyframes cue { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+  /* Hero intro sequence */
+  .intro > * { opacity: 0; transform: translateY(18px); animation: rise .9s var(--ease) forwards; }
+  .intro > :nth-child(1) { animation-delay: .05s; }
+  .intro > :nth-child(2) { animation-delay: .25s; }
+  .intro > :nth-child(3) { animation-delay: .4s; }
+  .intro > :nth-child(4) { animation-delay: .55s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* Scroll reveals */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.scale { transform: scale(.96); }
+  .reveal.scale.in { transform: none; }
+
+  section { padding: clamp(80px, 11vw, 140px) 0; }
+
+  /* Pasuk band */
+  .pasuk-band { background: var(--ink); color: #f4efe5; text-align: center; position: relative; overflow: hidden; }
+  .pasuk-band .flame { width: 54px; margin: 0 auto 26px; filter: drop-shadow(0 0 22px rgba(196,170,124,.55)); animation: flicker 4s ease-in-out infinite; }
+  @keyframes flicker { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 18px rgba(196,170,124,.45)); } 50% { transform: scale(1.04); filter: drop-shadow(0 0 30px rgba(196,170,124,.7)); } }
+  .pasuk-band .he { font-family: var(--hebrew); font-size: clamp(30px, 5.2vw, 56px); line-height: 1.35; direction: rtl; margin: 0 auto 18px; max-width: 18ch; text-wrap: balance; }
+  .pasuk-band .he .word { display: inline-block; opacity: 0; transform: translateY(14px); filter: blur(4px); transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease); transition-delay: calc(var(--w) * 110ms); }
+  .pasuk-band.in .he .word { opacity: 1; transform: none; filter: none; }
+  .pasuk-band .en { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2.6vw, 26px); color: var(--gold-soft); margin: 0 auto 6px; max-width: 34ch; }
+  .pasuk-band .src { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: rgba(244,239,229,.6); margin: 0; }
+
+  /* About */
+  .about .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .about-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: clamp(28px, 4vw, 44px); position: relative; overflow: hidden; }
+  .about-card::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 220px; height: 220px; background: url(/assets/mark.png) center/contain no-repeat; opacity: .06; }
+  .facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  .facts li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+  .facts svg { width: 22px; height: 22px; color: var(--gold); margin-top: 3px; }
+  .facts strong { display: block; font-weight: 600; }
+  .facts span { color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 860px) { .about .grid { grid-template-columns: 1fr; } }
+
+  /* At a glance */
+  .glance { background: var(--stone); }
+  .glance-head { text-align: center; margin-bottom: 48px; }
+  .glance-head .lede { margin-inline: auto; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { background: var(--card); border-radius: 20px; padding: 28px 22px; text-align: center; border: 1px solid var(--line); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .stat:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -24px rgba(42,54,66,.35); }
+  .stat .big { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 5vw, 54px); line-height: 1; margin-bottom: 8px; font-variant-numeric: lining-nums; }
+  .stat .label { color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 860px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* The year */
+  .year-head { max-width: 640px; margin-bottom: 56px; }
+  .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .pillar { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 34px 30px 30px; overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s; }
+  .pillar:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(42,54,66,.4); border-color: var(--gold-soft); }
+  .pillar .num { position: absolute; top: 18px; right: 24px; font-family: var(--serif); font-size: 64px; line-height: 1; color: var(--stone); font-weight: 600; transition: color .3s; }
+  .pillar:hover .num { color: rgba(196,170,124,.35); }
+  .pillar .icon { width: 46px; height: 46px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); display: grid; place-items: center; margin-bottom: 20px; color: var(--gold); }
+  .pillar .icon svg { width: 24px; height: 24px; }
+  .pillar p { color: var(--ink-soft); margin: 0; }
+  @media (max-width: 760px) { .pillars { grid-template-columns: 1fr; } }
+
+  /* Steps */
+  .steps-sec { background: var(--card); border-block: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; counter-reset: s; position: relative; margin-top: 48px; }
+  .steps::before { content: ""; position: absolute; top: 25px; left: 16%; right: 16%; height: 1px; background: var(--line); }
+  .steps .line-fill { position: absolute; top: 25px; left: 16%; right: 16%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 1.6s var(--ease) .2s; }
+  .steps.in .line-fill { transform: scaleX(1); }
+  .step { text-align: center; position: relative; }
+  .step .dot { width: 50px; height: 50px; border-radius: 50%; background: var(--paper); border: 1px solid var(--gold-soft); display: grid; place-items: center; margin: 0 auto 18px; font-family: var(--serif); font-weight: 600; font-size: 22px; position: relative; }
+  .step p { color: var(--ink-soft); max-width: 30ch; margin-inline: auto; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } .steps::before, .steps .line-fill { display: none; } }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+  .faq { border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; padding: 22px 40px 22px 0; position: relative; font-weight: 600; font-size: 18px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: ""; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold); transform: translateY(-75%) rotate(45deg); transition: transform .3s var(--ease); }
+  .faq details[open] summary::after { transform: translateY(-25%) rotate(-135deg); }
+  .faq .ans { overflow: hidden; height: 0; transition: height .35s var(--ease); }
+  .faq .ans p { color: var(--ink-soft); margin: 0; padding: 0 0 22px; max-width: 62ch; }
+  @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+
+  /* Final CTA */
+  .final { padding: 0 0 clamp(80px, 10vw, 120px); }
+  .final-card { background: var(--ink); color: #f4efe5; border-radius: 32px; padding: clamp(48px, 8vw, 96px) 24px; text-align: center; position: relative; overflow: hidden; isolation: isolate; }
+  .final-card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 60% at 50% 0%, rgba(196,170,124,.25), transparent 70%); }
+  .final-card h2 { color: #fff; margin-bottom: 14px; }
+  .final-card p { color: rgba(244,239,229,.75); max-width: 50ch; margin: 0 auto 32px; }
+  .final-card .flame { width: 44px; margin: 0 auto 24px; filter: drop-shadow(0 0 22px rgba(196,170,124,.55)); animation: flicker 4s ease-in-out infinite; }
+
+  footer { padding: 36px 0 48px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+  footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer .he { font-family: var(--hebrew); direction: rtl; }
+
+  /* Mobile sticky CTA */
+  .sticky-cta { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 15; display: none; transform: translateY(140%); transition: transform .45s var(--ease); }
+  .sticky-cta .btn { width: 100%; justify-content: center; }
+  .sticky-cta.show { transform: none; }
+  @media (max-width: 760px) { .sticky-cta { display: block; } }
+
+  /* Dialog */
+  dialog { border: 0; padding: 0; border-radius: 20px; width: min(460px, calc(100vw - 32px)); max-height: calc(100svh - 32px); background: var(--card); color: var(--ink); box-shadow: 0 24px 64px rgba(42,54,66,.25); }
+  dialog::backdrop { background: rgba(42,54,66,.5); backdrop-filter: blur(2px); }
+  dialog[open] { animation: pop .3s var(--ease); }
+  @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.98); } }
+  .sheet { padding: 30px 24px 24px; position: relative; }
+  .sheet h2 { font-size: 34px; margin: 0 0 4px; }
+  .sheet .sub { color: var(--ink-soft); font-size: 15px; margin: 0 0 20px; }
+  .close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; color: var(--ink-soft); font-size: 24px; cursor: pointer; }
   .close:hover { background: var(--paper); }
   label { display: block; font-size: 13px; font-weight: 500; margin: 0 0 6px; }
   .opt { color: var(--ink-soft); font-weight: 400; }
-  input, select, textarea {
-    width: 100%; font: 16px Inter, sans-serif; color: var(--ink);
-    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
-    margin: 0 0 16px;
-  }
-  textarea { resize: vertical; min-height: 84px; }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
-  .sheet .btn { width: 100%; margin-top: 4px; }
-  .err { color: var(--danger); font-size: 14px; margin: 0 0 12px; min-height: 0; }
+  .sheet input, .sheet select, .sheet textarea { width: 100%; font: 16px Inter, sans-serif; color: var(--ink); padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; margin: 0 0 16px; }
+  .sheet textarea { resize: vertical; min-height: 84px; }
+  .sheet input:focus, .sheet select:focus, .sheet textarea:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
+  .sheet .btn { width: 100%; justify-content: center; margin-top: 4px; }
+  .err { color: var(--danger); font-size: 14px; margin: 0 0 12px; }
   .err:empty { display: none; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .done { text-align: center; padding: 12px 0 4px; }
+  .done img { width: 44px; margin: 0 auto 12px; }
   .done p { color: var(--ink-soft); margin: 8px 0 20px; }
-  footer { margin-top: 56px; font-size: 12px; color: var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .intro > *, .reveal, .pasuk-band .he .word { opacity: 1 !important; transform: none !important; filter: none !important; }
+    .steps .line-fill { transform: scaleX(1); }
+    .scroll-cue { display: none; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1><img class="logo" src="/assets/logo.png" width="1202" height="444" alt="Kitov Sachra — Bais Yaakov Seminary — כי טוב סחרה"></h1>
-  <p class="eyebrow place">Jerusalem</p>
-  <hr class="rule">
-  <p class="pasuk">כִּי טוֹב סַחְרָהּ מִסְּחַר־כָּסֶף וּמֵחָרוּץ תְּבוּאָתָהּ</p>
-  <p class="pasuk-src">Mishlei 3:14</p>
-  <button class="btn" id="open" type="button">Request Access</button>
-  <footer>© <span id="yr"></span> Kitov Sachra Seminary</footer>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Kitov Sachra Seminary, back to top"><img src="/assets/mark.png" alt="" width="30" height="30">Kitov Sachra</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#year">The Year</a></li>
+      <li><a href="#join">Joining</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <button class="btn sm" type="button" data-request>Request Access</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="arches" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="currentColor" d="M0 220V120c0-40 30-70 70-70s70 30 70 70v100h20V110c0-50 40-90 90-90s90 40 90 90v110h20V120c0-40 30-70 70-70s70 30 70 70v100h20V100c0-55 45-100 100-100s100 45 100 100v120h20V120c0-40 30-70 70-70s70 30 70 70v100h20V110c0-50 40-90 90-90s90 40 90 90v110h20V120c0-40 30-70 70-70s70 30 70 70v100h20V120c0-40 30-70 70-70s70 30 70 70v100z"/>
+    </svg>
+    <div class="wrap intro">
+      <img class="hero-logo" src="/assets/logo.png" width="1202" height="444" alt="Kitov Sachra — Bais Yaakov Seminary — כי טוב סחרה">
+      <h1>A year of Torah, growth and Yerushalayim.</h1>
+      <p class="lede">A Bais Yaakov seminary in the heart of Jerusalem, where young women spend a year learning, giving and growing in a warm and loving home.</p>
+      <div class="ctas">
+        <button class="btn" type="button" data-request>Request Access <span class="arrow" aria-hidden="true">→</span></button>
+        <a class="link" href="#about">Discover Kitov</a>
+      </div>
+    </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <section class="pasuk-band" id="pasuk" aria-label="Mishlei 31:18">
+    <div class="wrap">
+      <img class="flame" src="/assets/mark-light.png" alt="" width="54" height="54">
+      <p class="he" lang="he">טָעֲמָה כִּי טוֹב סַחְרָהּ לֹא יִכְבֶּה בַלַּיְלָה נֵרָהּ</p>
+      <p class="en">“She senses that her trade is good; her lamp does not go out at night.”</p>
+      <p class="src">Mishlei 31:18</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap grid">
+      <div>
+        <p class="eyebrow reveal">About Kitov</p>
+        <h2 class="reveal" style="--i:1">Where every girl’s flame is given room to grow.</h2>
+        <p class="lede reveal" style="--i:2">Kitov Sachra is a Bais Yaakov seminary for young women after high school. Our mission is simple: to help each student reach the highest caliber of spiritual and personal growth, in a warm and loving environment.</p>
+        <p class="reveal" style="--i:3">The year is lived in Yerushalayim itself, in the Geula neighborhood, minutes from the Old City and the Kosel. Classes, chesed, trips and friendships all happen in the city that sits at the center of our tefillos.</p>
+      </div>
+      <div class="about-card reveal scale" style="--i:2">
+        <ul class="facts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v15.5M4 19.5A1.5 1.5 0 0 0 5.5 21H18v-3.5H5.5A1.5 1.5 0 0 0 4 19.5Z"/></svg><div><strong>Bais Yaakov seminary</strong><span>Torah learning rooted in the Bais Yaakov tradition</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Geula, Jerusalem</strong><span>In the heart of the city</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></svg><div><strong>Dormitory living</strong><span>Students live together in seminary housing</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h12M9 3v2m1.5 0c-.8 4-3.7 7.5-7 9M6 9c1.2 2.3 3.3 4.2 6 5.3M13 21l4-9 4 9m-7-2.5h6"/></svg><div><strong>Taught in English</strong><span>For students from English-speaking homes</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="glance" id="glance">
+    <div class="wrap">
+      <div class="glance-head">
+        <p class="eyebrow reveal">At a glance</p>
+        <h2 class="reveal" style="--i:1">The program</h2>
+      </div>
+      <div class="stats">
+        <div class="stat reveal" style="--i:0"><div class="big">8–10</div><div class="label">months in Jerusalem</div></div>
+        <div class="stat reveal" style="--i:1"><div class="big">17–25</div><div class="label">ages welcomed</div></div>
+        <div class="stat reveal" style="--i:2"><div class="big">Masa</div><div class="label">listed program</div></div>
+        <div class="stat reveal" style="--i:3"><div class="big">Touro</div><div class="label">Israel Option seminary</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="year" id="year">
+    <div class="wrap">
+      <div class="year-head">
+        <p class="eyebrow reveal">The year</p>
+        <h2 class="reveal" style="--i:1">More than a year abroad.</h2>
+        <p class="lede reveal" style="--i:2">A seminary year is a turning point. At Kitov it is built on four things.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar reveal" style="--i:0">
+          <span class="num" aria-hidden="true">01</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v14c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-14c-4 0-6.5.5-8 2Zm0 0V20.5"/></svg></div>
+          <h3>Learning</h3>
+          <p>Daily classes in Torah, hashkafa and halacha, taught in English by teachers who know each student and are there for her.</p>
+        </article>
+        <article class="pillar reveal" style="--i:1">
+          <span class="num" aria-hidden="true">02</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg></div>
+          <h3>Chesed</h3>
+          <p>Giving is part of the week, including regular visits with children with special needs in Jerusalem: art, dancing, and cards for the Yamim Tovim.</p>
+        </article>
+        <article class="pillar reveal" style="--i:2">
+          <span class="num" aria-hidden="true">03</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m3 19 6-11 4 7 3-4 5 8H3Z"/><circle cx="17" cy="6" r="2"/></svg></div>
+          <h3>Eretz Yisrael</h3>
+          <p>Trips across the land that are meant to be meaningful, not just memorable, from the Kosel to the north and the south.</p>
+        </article>
+        <article class="pillar reveal" style="--i:3">
+          <span class="num" aria-hidden="true">04</span>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9Z"/></svg></div>
+          <h3>Friendship & production</h3>
+          <p>A close-knit family of girls, and a big seminary production that brings the whole year together on one stage.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-sec" id="join">
+    <div class="wrap" style="text-align:center">
+      <p class="eyebrow reveal">Joining Kitov</p>
+      <h2 class="reveal" style="--i:1">Three simple steps</h2>
+      <div class="steps reveal" id="steps">
+        <span class="line-fill" aria-hidden="true"></span>
+        <div class="step"><div class="dot">1</div><h3>Request access</h3><p>Tell us a little about yourself. It takes under a minute.</p></div>
+        <div class="step"><div class="dot">2</div><h3>We reach out</h3><p>Our office will be in touch with details about the year and the next steps.</p></div>
+        <div class="step"><div class="dot">3</div><h3>Plan your year</h3><p>Get ready for a year in Yerushalayim you will carry with you for life.</p></div>
+      </div>
+      <div class="reveal" style="margin-top:48px"><button class="btn" type="button" data-request>Request Access <span class="arrow" aria-hidden="true">→</span></button></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq-grid">
+      <div>
+        <p class="eyebrow reveal">Questions</p>
+        <h2 class="reveal" style="--i:1">Good to know</h2>
+        <p class="lede reveal" style="--i:2">Don’t see your question? Request access and our office will answer it personally.</p>
+      </div>
+      <div class="faq reveal" style="--i:1">
+        <details><summary>Who is Kitov Sachra for?</summary><div class="ans"><p>Young women after high school who want a year of learning and growth in Jerusalem. Classes are in English, and the program lists ages 17 to 25.</p></div></details>
+        <details><summary>Where is the seminary?</summary><div class="ans"><p>In the Geula neighborhood of Jerusalem, in the center of the city.</p></div></details>
+        <details><summary>How long is the program?</summary><div class="ans"><p>The seminary year runs 8 to 10 months.</p></div></details>
+        <details><summary>Where do students live?</summary><div class="ans"><p>Students live together in seminary dormitory housing.</p></div></details>
+        <details><summary>Is Kitov a Masa program?</summary><div class="ans"><p>Yes. Kitov Sachra is listed as a Masa Israel program. Eligibility for Masa grants is set by Masa, so please check with them for your situation.</p></div></details>
+        <details><summary>Can I earn college credit?</summary><div class="ans"><p>Kitov Sachra is a participating seminary in Touro University’s Israel Option. Credit for the year is recorded if you go on to attend a participating Touro college.</p></div></details>
+        <details><summary>How do I apply?</summary><div class="ans"><p>Start by requesting access. Our office will reach out with everything you need to know.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <div class="final-card reveal scale">
+        <img class="flame" src="/assets/mark-light.png" alt="" width="44" height="44">
+        <h2>Your year in Yerushalayim starts here.</h2>
+        <p>Request access and we’ll be in touch with everything you need to know about Kitov Sachra.</p>
+        <button class="btn light" type="button" data-request>Request Access <span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Kitov Sachra Seminary · Jerusalem</span>
+    <span class="he" lang="he">כי טוב סחרה</span>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky"><button class="btn" type="button" data-request>Request Access</button></div>
 
 <dialog id="dlg" aria-labelledby="dlg-title">
   <div class="sheet">
     <button class="close" type="button" aria-label="Close" data-close>&times;</button>
     <form id="form" novalidate>
       <h2 id="dlg-title">Request Access</h2>
-      <p class="sub">Leave your details and we'll be in touch.</p>
+      <p class="sub">Leave your details and we’ll be in touch.</p>
       <label for="full_name">Full name</label>
       <input id="full_name" name="full_name" autocomplete="name" required maxlength="200">
       <label for="email">Email</label>
@@ -143,11 +425,12 @@
       <textarea id="message" name="message" maxlength="2000"></textarea>
       <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <p class="err" id="err" role="alert"></p>
-      <button class="btn" type="submit" id="submit">Send request</button>
+      <button class="btn" type="submit" id="submit">Request Access</button>
     </form>
     <div class="done" id="done" hidden>
+      <img src="/assets/mark.png" alt="" width="44" height="44">
       <h2>Thank you</h2>
-      <p>Your request was received. We'll be in touch soon.</p>
+      <p>Your request was received. We’ll be in touch soon.</p>
       <button class="btn" type="button" data-close>Close</button>
     </div>
   </div>
@@ -156,22 +439,54 @@
 <script>
   const SUPABASE_URL = "https://fyrtoeonmxubxjyvqmif.supabase.co";
   const SUPABASE_KEY = "sb_publishable_C8fosExsAC-Qn4s_R3pkUw_QrjUi-nz";
+  const $ = (id) => document.getElementById(id);
+  $("yr").textContent = new Date().getFullYear();
 
-  document.getElementById("yr").textContent = new Date().getFullYear();
-  const dlg = document.getElementById("dlg");
-  const form = document.getElementById("form");
-  const done = document.getElementById("done");
-  const err = document.getElementById("err");
-  const submit = document.getElementById("submit");
+  /* Nav background + mobile sticky CTA */
+  const nav = $("nav"), sticky = $("sticky");
+  const onScroll = () => {
+    const y = scrollY;
+    nav.classList.toggle("scrolled", y > 20);
+    const nearEnd = innerHeight + y > document.body.scrollHeight - 420;
+    sticky.classList.toggle("show", y > innerHeight * 0.8 && !nearEnd);
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
-  document.getElementById("open").addEventListener("click", () => {
+  /* Split the Hebrew pasuk into words for a staggered reveal */
+  document.querySelectorAll(".pasuk-band .he").forEach((el) => {
+    el.innerHTML = el.textContent.trim().split(/\s+/).map((w, i) => `<span class="word" style="--w:${i}">${w}</span>`).join(" ");
+  });
+
+  /* Scroll reveals */
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+  document.querySelectorAll(".reveal, .pasuk-band").forEach((el) => io.observe(el));
+
+  /* FAQ: animate open/close height */
+  document.querySelectorAll(".faq details").forEach((d) => {
+    const ans = d.querySelector(".ans");
+    d.querySelector("summary").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (d.open) {
+        ans.style.height = ans.scrollHeight + "px";
+        requestAnimationFrame(() => (ans.style.height = "0px"));
+        ans.addEventListener("transitionend", () => (d.open = false), { once: true });
+      } else {
+        d.open = true;
+        ans.style.height = ans.scrollHeight + "px";
+        ans.addEventListener("transitionend", () => (ans.style.height = "auto"), { once: true });
+      }
+    });
+  });
+
+  /* Request Access dialog */
+  const dlg = $("dlg"), form = $("form"), done = $("done"), err = $("err"), submit = $("submit");
+  document.querySelectorAll("[data-request]").forEach((b) => b.addEventListener("click", () => {
     form.hidden = false; done.hidden = true; err.textContent = "";
-    dlg.showModal();
-    document.getElementById("full_name").focus();
-  });
-  dlg.addEventListener("click", (e) => {
-    if (e.target === dlg || e.target.closest("[data-close]")) dlg.close();
-  });
+    dlg.showModal(); $("full_name").focus();
+  }));
+  dlg.addEventListener("click", (e) => { if (e.target === dlg || e.target.closest("[data-close]")) dlg.close(); });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -199,7 +514,7 @@
     } catch {
       err.textContent = "Something went wrong. Please try again.";
     } finally {
-      submit.disabled = false; submit.textContent = "Send request";
+      submit.disabled = false; submit.textContent = "Request Access";
     }
   });
 </script>
